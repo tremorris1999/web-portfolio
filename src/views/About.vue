@@ -24,7 +24,7 @@
           text="Spokane, WA"
           text-color="white"
           variant="elevated"
-          @click="externalLinks['spokane']"
+          @click="openLink(externalLinks['spokane'])"
         />.
       </p>
       <p class="mb-8">
@@ -43,7 +43,7 @@
           text="Eastern Washington University"
           text-color="white"
           variant="elevated"
-          @click="externalLinks['ewu']"
+          @click="openLink(externalLinks['ewu'])"
         />
         with a Bachelor of Science in Computer Science and a minor in
         Mathematics. During my time at EWU, I focused mainly on discrete
@@ -66,7 +66,7 @@
           text="Bun.sh"
           text-color="white"
           variant="elevated"
-          @click="externalLinks['bun']"
+          @click="openLink(externalLinks['bun'])"
         />
         JavaScript runtime and
         <v-chip
@@ -77,7 +77,7 @@
           text="Qwik"
           text-color="white"
           variant="elevated"
-          @click="externalLinks['qwik']"
+          @click="openLink(externalLinks['qwik'])"
         />
         JavaScript framework. am genuinely passionate about expanding my
         skillset and finding new ways to challenge myself as I pursue this
@@ -104,7 +104,7 @@
         color="secondary"
         prepend-icon="mdi-card-account-mail"
         size="large"
-        @click="externalLinks['email']"
+        @click="openLink(externalLinks['email'])"
         >Contact Me</v-btn
       >
     </v-card-actions>
@@ -114,6 +114,7 @@
 <script lang="ts" setup>
 import { externalLinks } from '@/router/external'
 import { toQueryString } from '@/utils'
+import { openLink } from '@/utils'
 
 const statsOptions = {
   username: 'tremorris1999',

@@ -35,19 +35,19 @@
           class="text-h6"
           prepend-icon="mdi-github"
           title="GitHub"
-          @click="externalLinks['github']"
+          @click="openLink(externalLinks['github'])"
         />
         <v-list-item
           class="text-h6"
           prepend-icon="mdi-linkedin"
           title="LinkedIn"
-          @click="externalLinks['linkedin']"
+          @click="openLink(externalLinks['linkedin'])"
         />
         <v-list-item
           class="text-h6"
           prepend-icon="mdi-card-account-mail"
           title="Contact Me"
-          @click="externalLinks['email']"
+          @click="openLink(externalLinks['email'])"
         />
       </v-list>
     </v-navigation-drawer>
@@ -58,6 +58,7 @@
 import { ref } from 'vue'
 import Logo from '@/components/LogoSvg.vue'
 import { externalLinks } from '@/router/external'
+import { openLink } from '@/utils'
 const width = ref(window.innerWidth)
 const onResize = () => {
   width.value = window.innerWidth
