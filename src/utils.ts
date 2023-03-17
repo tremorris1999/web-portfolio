@@ -4,3 +4,5 @@ export const toQueryString = (params: any) => {
     .map((k) => esc(k) + '=' + esc(params[k]))
     .join('&')
 }
+
+export const openLink = (url: string) => window.open(url, '_blank')

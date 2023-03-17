@@ -3,7 +3,7 @@
     <v-card-title class="text-h5">
       {{ repo.name }}
     </v-card-title>
-    <div class="d-flex justify-space-around my-0 py-0">
+    <div class="d-flex justify-space-evenly my-0 py-0">
       <v-chip
         v-for="(topic, i) in repo.topics"
         :key="i"
@@ -18,7 +18,8 @@
       class="mt-0 mb-4"
       cycle
       height="400px"
-      :show-arrows="false"
+      hide-delimiters
+      show-arrows="hover"
     >
       <v-carousel-item v-for="(image, i) in repoImages" :key="i" :src="image" />
     </v-carousel>
@@ -31,6 +32,7 @@
         color="primary"
         prepend-icon="mdi-link-box-variant-outline"
         size="large"
+        @click="openLink(repo.homepage)"
       >
         View Site
       </v-btn>
@@ -39,6 +41,7 @@
         color="secondary"
         prepend-icon="mdi-source-branch"
         size="large"
+        @click="openLink(repo.html_url)"
       >
         View Source
       </v-btn>
@@ -49,8 +52,8 @@
         prepend-icon="mdi-source-commit"
         size="large"
       >
-        <CommitHistory :lookup="props.lookup" />
         View Commits
+        <CommitHistory :lookup="props.lookup" :name="repo.name" />
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -62,6 +65,7 @@ import { onMounted, PropType, ref } from 'vue'
 import { github } from '@/api'
 import { images } from '@/assets/remote'
 import CommitHistory from './CommitHistory.vue'
+import { openLink } from '@/utils'
 
 const props = defineProps({
   lookup: {

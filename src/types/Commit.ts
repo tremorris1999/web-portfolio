@@ -16,6 +16,7 @@ export type Commit = ReturnType<typeof Commit>
 export const CommitLog = () => ({
   sha: 'string',
   node_id: 'string',
+  html_url: 'string',
   commit: Commit(),
   message: '',
   url: '',
