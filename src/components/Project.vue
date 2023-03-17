@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-8 my-4 px-8 py-2">
+  <v-card class="mx-auto my-4 px-8 py-2" max-width="700px">
     <v-card-title class="text-h5">
       {{ repo.name }}
     </v-card-title>
@@ -15,7 +15,7 @@
     </div>
     <v-carousel
       v-if="repoImages?.length"
-      class="mt-0 mb-4"
+      class="mt-0 mb-8"
       cycle
       height="400px"
       hide-delimiters
@@ -24,7 +24,7 @@
       <v-carousel-item v-for="(image, i) in repoImages" :key="i" :src="image" />
     </v-carousel>
     {{ repo.description }}
-
+    <LanguageBreakdown :lookup="props.lookup" />
     <v-card-actions>
       <v-btn
         v-if="repo.homepage"
@@ -65,6 +65,7 @@ import { onMounted, PropType, ref } from 'vue'
 import { github } from '@/api'
 import { images } from '@/assets/remote'
 import CommitHistory from './CommitHistory.vue'
+import LanguageBreakdown from './LanguageBreakdown.vue'
 import { openLink } from '@/utils'
 
 const props = defineProps({

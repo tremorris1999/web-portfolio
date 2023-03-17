@@ -1,5 +1,5 @@
 <template>
-  <v-app theme="dark">
+  <v-app>
     <default-navigation />
     <default-view />
   </v-app>
@@ -9,9 +9,3 @@
 import DefaultView from './View.vue'
 import DefaultNavigation from './Navigation.vue'
 </script>
-
-<style>
-#footer {
-  max-height: 5%;
-}
-</style>

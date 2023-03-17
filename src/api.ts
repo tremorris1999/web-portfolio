@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CommitLog, Repo, RepoLookup } from './types'
+import { CommitLog, LanguageList, Repo, RepoLookup } from './types'
 
 const githubApi = axios.create({
   baseURL: 'https://api.github.com',
@@ -19,6 +19,12 @@ export const github = {
   getCommits: async (repo: RepoLookup) => {
     const uri = `/repos/${repo.owner}/${repo.name}/commits`
     const { data } = await githubApi.get<CommitLog[]>(uri)
+    return data
+  },
+
+  getLanguages: async (repo: RepoLookup) => {
+    const uri = `/repos/${repo.owner}/${repo.name}/languages`
+    const { data } = await githubApi.get<LanguageList>(uri)
     return data
   },
 }
