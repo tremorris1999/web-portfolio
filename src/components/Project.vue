@@ -1,13 +1,13 @@
 <template>
-  <v-card class="mx-auto my-4 px-8 py-2" max-width="700px">
+  <v-card class="mx-auto my-4 px-8 py-2" max-width="600px">
     <v-card-title class="text-h5">
       {{ repo.name }}
     </v-card-title>
-    <div class="d-flex justify-space-evenly my-0 py-0">
+    <div class="d-flex justify-space-evenly flex-wrap mt-4">
       <v-chip
         v-for="(topic, i) in repo.topics"
         :key="i"
-        class="mx-2 my-4"
+        class="mx-2 my-2"
         color="secondary"
       >
         {{ topic }}
@@ -15,17 +15,19 @@
     </div>
     <v-carousel
       v-if="repoImages?.length"
-      class="mt-0 mb-8"
+      class="my-2"
       cycle
-      height="400px"
+      height="200px"
       hide-delimiters
       show-arrows="hover"
     >
-      <v-carousel-item v-for="(image, i) in repoImages" :key="i" :src="image" />
+      <v-carousel-item v-for="(image, i) in repoImages" :key="i">
+        <v-img class="py-auto" :src="image" />
+      </v-carousel-item>
     </v-carousel>
     {{ repo.description }}
     <LanguageBreakdown :lookup="props.lookup" />
-    <v-card-actions>
+    <v-card-actions class="d-flex justify-space-evenly flex-wrap">
       <v-btn
         v-if="repo.homepage"
         class="mx-2 my-4"
@@ -45,7 +47,6 @@
       >
         View Source
       </v-btn>
-      <v-spacer />
       <v-btn
         class="mx-2 my-4"
         color="success"

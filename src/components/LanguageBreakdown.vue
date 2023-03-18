@@ -7,9 +7,9 @@
       width="1000"
     ></canvas>
   </div>
-  <div class="my-4 d-flex justify-space-evenly">
+  <div class="mx-auto my-4 d-flex justify-space-evenly flex-wrap">
     <v-badge v-for="(value, i) in dataSet" :key="i" :color="value.color" inline>
-      <p class="mr-2">{{ value.name }}</p>
+      <p class="mr-2 my-2">{{ value.name }}</p>
     </v-badge>
   </div>
 </template>
