@@ -21,7 +21,7 @@
     </v-row>
     <vue-pdf-embed
       class="overflow-auto mx-2"
-      source="@/../public/Resume.pdf"
+      source="/Resume.pdf"
       :width="(maxWidth - 20) * zoom"
     />
     <v-card-actions>
@@ -53,7 +53,7 @@ const adjustZoom = (change: number) => {
 }
 
 const download = () => {
-  window.open('@/../public/Resume.pdf', '_blank')
+  window.open('/Resume.pdf', '_blank')
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <default-navigation @click="() => {}" />
-    <default-view @click="() => {}" />
+    <default-navigation />
+    <default-view />
   </v-app>
 </template>
 
