@@ -70,8 +70,8 @@ const getCommits = async () => {
   const logs = await github.getCommits(props.lookup)
   commitLogs.value = logs.sort((a, b) => {
     return (
-      new Date(a.commit.author.date).getTime() -
-      new Date(b.commit.author.date).getTime()
+      new Date(b.commit.author.date).getTime() -
+      new Date(a.commit.author.date).getTime()
     )
   })
   isLoading.value = false
