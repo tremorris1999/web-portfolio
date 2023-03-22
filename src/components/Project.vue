@@ -80,9 +80,6 @@ const repoImages = ref<string[]>([])
 
 onMounted(async () => {
   repo.value = await github.getRepo(props.lookup)
-  if (props.lookup.imageGetter)
-    repoImages.value = await props.lookup.imageGetter()
-
-  console.log(repoImages.value)
+  repoImages.value = await github.getContentItems(props.lookup, 'showcase')
 })
 </script>

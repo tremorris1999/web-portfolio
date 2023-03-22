@@ -14,5 +14,4 @@ export type Repo = ReturnType<typeof Repo>
 export interface RepoLookup {
   owner: string
   name: string
-  imageGetter?: () => Promise<string[]>
 }
