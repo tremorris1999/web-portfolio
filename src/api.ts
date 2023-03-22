@@ -27,4 +27,17 @@ export const github = {
     const { data } = await githubApi.get<LanguageList>(uri)
     return data
   },
+
+  getContentItems: async (repo: RepoLookup, path: string) => {
+    const uri = `/repos/${repo.owner}/${repo.name}/contents/${path}`
+    const { data } = await githubApi.get<any>(uri)
+    const links = data.map((item: any) => item.url)
+    const results = [] as string[]
+    for (const link of links) {
+      const { data } = await githubApi.get<any>(link)
+      results.push(`data:image/png;base64,${data.content}`)
+    }
+
+    return results
+  },
 }

@@ -64,7 +64,6 @@
 import { Repo, RepoLookup } from '@/types'
 import { onMounted, PropType, ref } from 'vue'
 import { github } from '@/api'
-import { images } from '@/assets/remote'
 import CommitHistory from './CommitHistory.vue'
 import LanguageBreakdown from './LanguageBreakdown.vue'
 import { openLink } from '@/utils'
@@ -81,6 +80,9 @@ const repoImages = ref<string[]>([])
 
 onMounted(async () => {
   repo.value = await github.getRepo(props.lookup)
-  repoImages.value = images[repo.value.name]
+  if (props.lookup.imageGetter)
+    repoImages.value = await props.lookup.imageGetter()
+
+  console.log(repoImages.value)
 })
 </script>
